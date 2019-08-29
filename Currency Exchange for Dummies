@@ -1,1 +1,61 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package cashlord;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import static java.time.Clock.system;
+
+/**
+ *
+ * @author andrewpaschke
+ */
+public class CashLord {
+public static double usDollar;
+//US Dollar will be the standard of evaluation of the other currencies.
+public double euro;
+public double yen;
+public double pound;
+public double rupee;
+public double real;
+public double canadianDollar;
+public double won;
+public double ruble;
+public double australianDollar;
+public double peso;
+public double rupiah;
+public double lira;
+public double riyal;
+public double swissFranc;
+
+
+        public void convertToEuro() throws IOException{
+        String url_str = "https://api.exchangerate-api.com/v4/latest/USD";
+        URL url = new URL(url_str);
+        HttpURLConnection request = (HttpURLConnection) url.openConnection();
+        request.connect();
+        
+        JsonParser jp = new JsonParser();
+        JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
+        JsonObject jsonobj = root.getAsJsonObject();
+        String req_result = jsonobj.get("result").getAsString();
+       }
+
+        public static double usDollar(double usDollar){
+        usDollar = 1.00000;
+        return usDollar;
+}
+    
+    public static void main(String[] args) {
+        usDollar = usDollar(usDollar);
+        System.out.println(String.valueOf(usDollar));
+    }
+
+
+    
+    
+}
